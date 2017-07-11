@@ -1,0 +1,12 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.4.1
+    environment:
+      HOST_URL: 'web-monitoring-db.test'
+      ALLOWED_ARCHIVE_HOSTS: 'https://edgi-versionista-archive.s3.amazonaws.com/ https://test-bucket.s3.amazonaws.com/'
+    steps:
+      - checkout
+      - run: command: bundle exec rubocop
